@@ -1,0 +1,15 @@
+header {
+  margin: 20px 0;
+
+  nav {
+    text-align: center;
+
+    .logo {
+      display: inline-block;
+
+      &__image {
+        width: 268px;
+      }
+    }
+  }
+}

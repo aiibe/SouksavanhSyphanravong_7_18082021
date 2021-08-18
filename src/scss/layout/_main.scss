@@ -1,0 +1,13 @@
+.recipes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  margin-top: 20px;
+
+  .recipe {
+    &__card {
+      border-radius: 5px;
+      background-color: #e7e7e7;
+    }
+  }
+}

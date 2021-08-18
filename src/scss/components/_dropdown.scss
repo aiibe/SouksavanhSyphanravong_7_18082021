@@ -1,0 +1,24 @@
+.dropdown {
+  margin-right: 5px;
+
+  &-toggle {
+    border: 0;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+#dropdown {
+  &-ingredients {
+    background-color: $bg-color-blue;
+  }
+
+  &-devices {
+    background-color: $bg-color-green;
+  }
+
+  &-ustensils {
+    background-color: $bg-color-orange;
+  }
+}

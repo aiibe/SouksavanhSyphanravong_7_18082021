@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+    <meta name="description" content="Recettes de petits plats faciles" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <header role="banner">
+      <nav role="navigation">
+        <a href="." class="logo">
+          <img
+            class="logo__image"
+            src="/logo.png"
+            alt="Les Petits Plats - homepage"
+          />
+        </a>
+      </nav>
+    </header>
+    <main class="container">
+      <div class="search input-group mb-3">
+        <input
+          type="text"
+          class="search__text form-control"
+          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+          aria-label="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+          aria-describedby="button-search"
+        />
+        <button
+          id="button-search"
+          class="search__button btn"
+          type="button"
+          role="search"
+          aria-label="search"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+      <ul class="keywords list-unstyled d-flex">
+        <li>
+          <button class="keyword btn keyword--ingredient">
+            Poire<i class="bi bi-x-circle"></i>
+          </button>
+        </li>
+        <li>
+          <button class="keyword btn keyword--device">
+            Soupe<i class="bi bi-x-circle"></i>
+          </button>
+        </li>
+        <li>
+          <button class="keyword btn keyword--ustensil">
+            Soupe<i class="bi bi-x-circle"></i>
+          </button>
+        </li>
+      </ul>
+      <div class="filters d-flex">
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdown-ingredients"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ingrédient
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdown-ingredients">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdown-devices"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Appareils
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdown-devices">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdown-ustensils"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ustensiles
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdown-ustensils">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="recipes"></div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>

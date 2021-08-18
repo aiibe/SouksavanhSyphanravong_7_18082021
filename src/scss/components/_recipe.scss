@@ -1,0 +1,27 @@
+.recipe {
+  &__card {
+  }
+
+  &__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  &__ingredient {
+    font-size: 12px;
+    font-weight: bold;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  &__desc {
+    font-size: 12px;
+    font-family: "Roboto", "Lato", sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 6;
+  }
+}

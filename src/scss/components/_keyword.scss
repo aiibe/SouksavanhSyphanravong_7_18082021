@@ -1,0 +1,22 @@
+.keyword {
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+  color: white;
+
+  i {
+    margin-left: 5px;
+  }
+
+  &--ingredient {
+    background-color: $bg-color-blue;
+  }
+
+  &--device {
+    background-color: $bg-color-green;
+  }
+
+  &--ustensil {
+    background-color: $bg-color-orange;
+  }
+}
