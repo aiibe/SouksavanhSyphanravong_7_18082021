@@ -1,6 +1,8 @@
 .search {
-  background-color: #e7e7e7;
-  border-radius: 5px;
+  &__box {
+    background-color: #e7e7e7;
+    border-radius: 5px;
+  }
 
   &__text {
     background-color: inherit;

@@ -2,7 +2,7 @@ class Component {
   constructor(selector) {
     this.type = "component";
     this.selector = document.querySelector(selector);
-    this.render();
+    this.refresh();
     this.after();
     this.events();
   }

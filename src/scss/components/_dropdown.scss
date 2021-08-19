@@ -7,6 +7,16 @@
     padding-top: 15px;
     padding-bottom: 15px;
   }
+
+  input {
+    &::placeholder {
+      color: white;
+    }
+
+    &:focus::placeholder {
+      opacity: 0.5;
+    }
+  }
 }
 
 #dropdown {

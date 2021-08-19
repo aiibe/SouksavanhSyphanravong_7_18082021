@@ -24,90 +24,51 @@
         </a>
       </nav>
     </header>
-    <main class="container">
-      <div class="search input-group mb-3">
-        <input
-          type="text"
-          class="search__text form-control"
-          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
-          aria-label="Rechercher un ingrédient, appareil, ustensiles ou une recette"
-          aria-describedby="button-search"
-        />
-        <button
-          id="button-search"
-          class="search__button btn"
-          type="button"
-          role="search"
-          aria-label="search"
-        >
-          <i class="bi bi-search"></i>
-        </button>
-      </div>
-      <ul class="keywords list-unstyled d-flex">
-        <li>
-          <button class="keyword btn keyword--ingredient">
-            Poire<i class="bi bi-x-circle"></i>
-          </button>
-        </li>
-        <li>
-          <button class="keyword btn keyword--device">
-            Soupe<i class="bi bi-x-circle"></i>
-          </button>
-        </li>
-        <li>
-          <button class="keyword btn keyword--ustensil">
-            Soupe<i class="bi bi-x-circle"></i>
-          </button>
-        </li>
-      </ul>
+    <main class="container" role="main">
+      <section class="search" role="region"></section>
+      <ul class="keywords list-unstyled d-flex"></ul>
       <div class="filters d-flex">
         <div class="dropdown">
-          <button
-            class="btn dropdown-toggle"
-            type="button"
+          <input
+            type="text"
+            autocomplete="off"
+            class="form-control fw-bold text-white dropdown-toggle"
             id="dropdown-ingredients"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Ingrédient
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdown-ingredients">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+            placeholder="Ingredients"
+          />
+          <ul
+            class="dropdown-menu menu-ingredients"
+            aria-labelledby="dropdown-ingredients"
+          ></ul>
         </div>
         <div class="dropdown">
-          <button
-            class="btn dropdown-toggle"
-            type="button"
+          <input
+            type="text"
+            autocomplete="off"
+            class="form-control fw-bold text-white dropdown-toggle"
             id="dropdown-devices"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Appareils
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdown-devices">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+            placeholder="Appareils"
+          />
+          <ul
+            class="dropdown-menu menu-devices"
+            aria-labelledby="dropdown-ingredients"
+          ></ul>
         </div>
         <div class="dropdown">
-          <button
-            class="btn dropdown-toggle"
-            type="button"
+          <input
+            type="text"
+            autocomplete="off"
+            class="form-control fw-bold text-white dropdown-toggle"
             id="dropdown-ustensils"
             data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Ustensiles
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdown-ustensils">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+            placeholder="Ustensils"
+          />
+          <ul
+            class="dropdown-menu menu-ustensils"
+            aria-labelledby="dropdown-ingredients"
+          ></ul>
         </div>
       </div>
       <div class="recipes"></div>
