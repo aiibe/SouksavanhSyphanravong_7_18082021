@@ -1,6 +1,16 @@
 .dropdown {
   margin-right: 5px;
 
+  &-menu.show {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &-item {
+    min-width: 150px;
+    color: white;
+  }
+
   &-toggle {
     border: 0;
     color: white;
@@ -25,6 +35,20 @@
   }
 
   &-devices {
+    background-color: $bg-color-green;
+  }
+
+  &-ustensils {
+    background-color: $bg-color-orange;
+  }
+}
+
+.menu {
+  &-ingredients.show {
+    background-color: $bg-color-blue;
+  }
+
+  &-devices.show {
     background-color: $bg-color-green;
   }
 

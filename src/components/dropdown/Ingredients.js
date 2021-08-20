@@ -25,7 +25,6 @@ class Ingredients extends Component {
   }
 
   render() {
-    console.log("render Ingredients");
     const { recipes } = dataStore.getState();
     const { value } = ingredientStore.getState();
     let ingredients = [

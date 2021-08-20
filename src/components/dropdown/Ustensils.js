@@ -28,13 +28,15 @@ class Devices extends Component {
     const { recipes } = dataStore.getState();
     let ustensils = [
       ...new Set(
-        recipes.reduce((all, recipe) => all.concat(recipe.ustensils), [])
+        recipes
+          .reduce((all, recipe) => all.concat(recipe.ustensils), [])
+          .map((u) => u.toLowerCase())
       ),
-    ].map((u) => u.toLowerCase());
+    ];
 
     const { value } = ustenstilStore.getState();
 
-    if (value) {
+    if (value !== "") {
       ustensils = ustensils.filter((u) => u.indexOf(value) !== -1);
     }
 

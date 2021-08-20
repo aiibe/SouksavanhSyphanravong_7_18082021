@@ -34,7 +34,7 @@ class Devices extends Component {
     ];
 
     const { value } = deviceStore.getState();
-    if (value) {
+    if (value !== "") {
       devices = devices.filter((d) => d.indexOf(value) !== -1);
     }
 
