@@ -1,5 +1,6 @@
 import Component from "../helpers/component";
 import dataStore from "../stores/dataStore";
+import searchStore from "../stores/searchStore";
 
 class Recipes extends Component {
   constructor(selector) {
@@ -8,7 +9,25 @@ class Recipes extends Component {
 
   render() {
     const { recipes } = dataStore.getState();
-    return recipes.map((recipe) => this.renderCard(recipe)).join("");
+    const { keywords } = searchStore.getState();
+
+    if (keywords.length === 0)
+      return recipes.map((recipe) => this.renderCard(recipe)).join("");
+
+    const filtered = keywords.reduce((all, word) => {
+      all =
+        all.length === 0
+          ? recipes.filter(
+              (recipe) => recipe.textSearch.indexOf(word.value) !== -1
+            )
+          : all.filter(
+              (recipe) => recipe.textSearch.indexOf(word.value) !== -1
+            );
+      return all;
+    }, []);
+
+    // TODO : when empty 'Aucune recette...'
+    return filtered.map((recipe) => this.renderCard(recipe)).join("");
   }
 
   renderCard(recipe) {

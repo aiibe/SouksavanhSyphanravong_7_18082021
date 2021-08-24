@@ -5,19 +5,27 @@ import "./scss/main.scss";
 import dataStore from "./stores/dataStore";
 import searchStore from "./stores/searchStore";
 import ingredientStore from "./stores/ingredientStore";
+import deviceStore from "./stores/deviceStore";
+import ustensilStore from "./stores/ustensilStore";
 
 // Components
 import Recipes from "./components/Recipes";
 import Search from "./components/Search";
 import { Ustensils, Devices, Ingredients } from "./components/dropdown";
 import Keywords from "./components/Keywords";
-import deviceStore from "./stores/deviceStore";
-import ustensilStore from "./stores/ustensilStore";
 
 // Fetch data and hydrate store
 async function hydrate() {
   const res = await fetch("/api/data.json");
   const data = await res.json();
+  data.recipes.forEach((recipe) => {
+    let stringIngredients = recipe.ingredients
+      .map((i) => i.ingredient)
+      .join(" ");
+    let stringUstensils = recipe.ustensils.join(" ");
+    let textSearch = `${recipe.name} ${recipe.description} ${stringIngredients} ${stringUstensils} ${recipe.appliance}`;
+    recipe.textSearch = textSearch.toLowerCase();
+  });
   dataStore.setState(() => data);
 }
 
@@ -44,6 +52,7 @@ async function start() {
 
   const recipes = new Recipes(".recipes");
   dataStore.subscribe(recipes);
+  searchStore.subscribe(recipes);
 }
 
 start();
