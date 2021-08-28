@@ -1,5 +1,6 @@
 import Component from "../helpers/component";
 import dataStore from "../stores/dataStore";
+import searchStore from "../stores/searchStore";
 
 class Search extends Component {
   constructor(selector) {
@@ -9,9 +10,10 @@ class Search extends Component {
   events() {
     this.selector.addEventListener("input", (event) => {
       const searchString = event.target.value;
-      if (searchString.length > 3) {
-        // Search begins here
-      }
+      searchStore.setState((oldState) => ({
+        ...oldState,
+        value: searchString.toLowerCase(),
+      }));
     });
   }
 

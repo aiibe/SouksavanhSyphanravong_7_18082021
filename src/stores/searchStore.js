@@ -1,5 +1,5 @@
 import Store from "../helpers/store";
 
-const searchStore = new Store({ recipes: [], keywords: [] });
+const searchStore = new Store({ value: "", keywords: [] });
 
 export default searchStore;

@@ -9,12 +9,25 @@ class Recipes extends Component {
 
   render() {
     const { recipes } = dataStore.getState();
-    const { keywords } = searchStore.getState();
+    const { keywords, value } = searchStore.getState();
 
-    if (keywords.length === 0)
-      return recipes.map((recipe) => this.renderCard(recipe)).join("");
+    // Case: Without tags selected
+    if (keywords.length === 0) {
+      // Display all recipes by default
+      if (value.length <= 2)
+        return recipes.map((recipe) => this.renderCard(recipe)).join("");
 
-    const filtered = keywords.reduce((all, word) => {
+      // Display recipes matching user's search value
+      let filtered = recipes.filter(
+        (recipe) => recipe.textSearch.indexOf(value) !== -1
+      );
+      return filtered.length !== 0
+        ? filtered.map((recipe) => this.renderCard(recipe)).join("")
+        : `<p>Aucune recette ne correspond à votre critère...</p>`;
+    }
+
+    // Case : Filter recipes by keyword tags selected
+    let filtered = keywords.reduce((all, word) => {
       all =
         all.length === 0
           ? recipes.filter(
@@ -26,8 +39,16 @@ class Recipes extends Component {
       return all;
     }, []);
 
-    // TODO : when empty 'Aucune recette...'
-    return filtered.map((recipe) => this.renderCard(recipe)).join("");
+    // Case : User search recipes via tags AND string match
+    if (value.length >= 3) {
+      filtered = filtered.filter(
+        (recipe) => recipe.textSearch.indexOf(value) !== -1
+      );
+    }
+
+    return filtered.length !== 0
+      ? filtered.map((recipe) => this.renderCard(recipe)).join("")
+      : `<p>Aucune recette ne correspond à votre critère...</p>`;
   }
 
   renderCard(recipe) {
