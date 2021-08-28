@@ -1,6 +1,9 @@
 import Component from "../helpers/component";
 import searchStore from "../stores/searchStore";
 
+/**
+ * Display all keywords selected
+ */
 class Keywords extends Component {
   constructor(selector) {
     super(selector);

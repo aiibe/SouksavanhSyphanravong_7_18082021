@@ -3,7 +3,7 @@ import dataStore from "../../stores/dataStore";
 import searchStore from "../../stores/searchStore";
 import ustenstilStore from "../../stores/ustensilStore";
 
-class Devices extends Component {
+class Ustensils extends Component {
   constructor(selector) {
     super(selector);
   }
@@ -49,4 +49,4 @@ class Devices extends Component {
   }
 }
 
-export default Devices;
+export default Ustensils;

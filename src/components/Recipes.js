@@ -2,6 +2,9 @@ import Component from "../helpers/component";
 import dataStore from "../stores/dataStore";
 import searchStore from "../stores/searchStore";
 
+/**
+ * Display recipes
+ */
 class Recipes extends Component {
   constructor(selector) {
     super(selector);

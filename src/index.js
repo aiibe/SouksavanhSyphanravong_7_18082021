@@ -18,6 +18,10 @@ import Keywords from "./components/Keywords";
 async function hydrate() {
   const res = await fetch("/api/data.json");
   const data = await res.json();
+  /**
+   * For each recipe, add textSearch field with
+   * its data converted into one long string
+   */
   data.recipes.forEach((recipe) => {
     let stringIngredients = recipe.ingredients
       .map((i) => i.ingredient)
@@ -26,10 +30,15 @@ async function hydrate() {
     let textSearch = `${recipe.name} ${recipe.description} ${stringIngredients} ${stringUstensils} ${recipe.appliance}`;
     recipe.textSearch = textSearch.toLowerCase();
   });
+
   dataStore.setState(() => data);
 }
 
-// Start
+/**
+ * Hydrate store
+ * Initialize components
+ * Subscribe components to reactive stores
+ */
 async function start() {
   await hydrate();
 
@@ -55,4 +64,5 @@ async function start() {
   searchStore.subscribe(recipes);
 }
 
+// Launch app
 start();

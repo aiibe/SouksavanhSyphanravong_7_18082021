@@ -3,6 +3,9 @@ import dataStore from "../../stores/dataStore";
 import ingredientStore from "../../stores/ingredientStore";
 import searchStore from "../../stores/searchStore";
 
+/**
+ * Display dropdown list for ingredients
+ */
 class Ingredients extends Component {
   constructor(selector) {
     super(selector);

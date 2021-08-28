@@ -3,6 +3,9 @@ import dataStore from "../../stores/dataStore";
 import searchStore from "../../stores/searchStore";
 import deviceStore from "../../stores/deviceStore";
 
+/**
+ * Display dropdown list for devices/appliances
+ */
 class Devices extends Component {
   constructor(selector) {
     super(selector);
