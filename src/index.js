@@ -14,6 +14,9 @@ import Search from "./components/Search";
 import { Ustensils, Devices, Ingredients } from "./components/dropdown";
 import Keywords from "./components/Keywords";
 
+// Trie
+import tree from "./tree";
+
 // Fetch data and hydrate store
 async function hydrate() {
   const res = await fetch("/api/data.json");
@@ -29,8 +32,12 @@ async function hydrate() {
     let stringUstensils = recipe.ustensils.join(" ");
     let textSearch = `${recipe.name} ${recipe.description} ${stringIngredients} ${stringUstensils} ${recipe.appliance}`;
     recipe.textSearch = textSearch.toLowerCase();
+
+    // Indexing each recipe information in our tree
+    tree.addText(textSearch, recipe.id);
   });
 
+  // Update data store
   dataStore.setState(() => data);
 }
 

@@ -1,6 +1,7 @@
 import Component from "../helpers/component";
 import dataStore from "../stores/dataStore";
 import searchStore from "../stores/searchStore";
+import tree from "../tree";
 
 /**
  * Display recipes
@@ -14,26 +15,26 @@ class Recipes extends Component {
     const { recipes } = dataStore.getState();
     const { keywords, value } = searchStore.getState();
 
-    // Case: Without tags selected
-    if (keywords.length === 0) {
-      // Display all recipes by default
-      if (value.length <= 2)
-        return recipes.map((recipe) => this.renderCard(recipe)).join("");
+    let final = [];
 
-      // Display recipes matching user's search value
-      let filtered = recipes.filter(
-        (recipe) => recipe.textSearch.indexOf(value) !== -1
-      );
-      return filtered.length !== 0
-        ? filtered.map((recipe) => this.renderCard(recipe)).join("")
-        : `<p>Aucune recette ne correspond à votre critère...</p>`;
+    // Case: User types in search bar
+    if (value.length <= 2) {
+      final = [...recipes];
+    } else {
+      // Traverse our tree to get recipes IDs
+      const IDs = tree.find(value.toLowerCase());
+      final = recipes.filter(({ id }) => IDs.includes(id));
     }
 
+    // Case : Display all recipes
+    if (keywords.length === 0)
+      return final.map((recipe) => this.renderCard(recipe)).join("");
+
     // Case : Filter recipes by keyword tags selected
-    let filtered = keywords.reduce((all, word) => {
+    final = keywords.reduce((all, word) => {
       all =
         all.length === 0
-          ? recipes.filter(
+          ? final.filter(
               (recipe) => recipe.textSearch.indexOf(word.value) !== -1
             )
           : all.filter(
@@ -42,15 +43,8 @@ class Recipes extends Component {
       return all;
     }, []);
 
-    // Case : User search recipes via tags AND string match
-    if (value.length >= 3) {
-      filtered = filtered.filter(
-        (recipe) => recipe.textSearch.indexOf(value) !== -1
-      );
-    }
-
-    return filtered.length !== 0
-      ? filtered.map((recipe) => this.renderCard(recipe)).join("")
+    return final.length > 0
+      ? final.map((recipe) => this.renderCard(recipe)).join("")
       : `<p>Aucune recette ne correspond à votre critère...</p>`;
   }
 
